@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(107, 59, 184, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(107, 59, 184, 0.6);
+  }
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f7ff 50%, #f0e6ff 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+
+  button:focus {
+    outline: none;
+  }
+}
+
+@layer components {
+  .gradient-accent {
+    background: linear-gradient(90deg, #7c3aed, #6d28d9, #4f46e5, #4338ca, #3730a3);
+  }
+
+  .gradient-accent-text {
+    background: linear-gradient(90deg, #7c3aed, #6d28d9, #4f46e5, #4338ca, #3730a3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+
+  .card {
+    @apply bg-white rounded-xl p-6 border border-gray-100 transition-all duration-300;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .card:hover {
+    @apply shadow-xl border-purple-200;
+    transform: translateY(-2px);
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-200 bg-white;
+  }
+
+  .input-field:focus {
+    border-color: #6e3bb8;
+    box-shadow: 0 0 0 3px rgba(107, 59, 184, 0.1);
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl;
+    background: linear-gradient(135deg, #6e3bb8 0%, #4a1f8c 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed hover:scale-100;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-gray-200 transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-small {
+    @apply px-3 py-1.5 bg-purple-100 text-purple-700 rounded-md font-medium transition-all duration-200 hover:bg-purple-200 transform hover:scale-105 active:scale-95;
+  }
+
+  .step-card {
+    @apply border-l-4 border-purple-700 pl-4 py-3 bg-gradient-to-r from-purple-50 to-transparent rounded-r-lg transition-all duration-300 transform;
+    animation: slideInLeft 0.5s ease-out;
+  }
+
+  .step-card:hover {
+    @apply bg-gradient-to-r from-purple-100 to-transparent pl-6 shadow-md;
+    border-left-width: 5px;
+  }
+
+  .state-tag {
+    @apply px-3 py-2 rounded-lg font-mono font-medium transition-all duration-300 transform hover:scale-110 cursor-default inline-block;
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  .state-tag-normal {
+    @apply bg-gray-100 text-gray-800;
+  }
+
+  .state-tag-start {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    @apply text-white shadow-md;
+  }
+
+  .state-tag-final {
+    background: linear-gradient(135deg, #c084fc, #a855f7);
+    @apply text-white shadow-md;
+  }
+
+  .state-tag-both {
+    background: linear-gradient(135deg, #818cf8, #7c3aed);
+    @apply text-white shadow-md;
+  }
+
+  .section-divider {
+    @apply h-1 rounded-full my-6;
+    background: linear-gradient(90deg, #e6d6f5, #c8a8e9, #9b6fd3, #6e3bb8, #4a1f8c);
+  }
+
+  .highlight-row {
+    @apply bg-gradient-to-r from-purple-50 to-transparent hover:from-purple-100;
+  }
+}
